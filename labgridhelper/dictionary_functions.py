@@ -15,7 +15,7 @@ def split_output_to_dict(command_protocoll, command, delimiter="=", strip_chars=
     output_dict = {}
     for line in command_output:
         try:
-            if line.count(delimiter) >= 1: # lines without a delimiter are ignored
+            if delimiter in line: # lines without a delimiter are ignored
                 (key, value) = line.split(delimiter, 1)
                 output_dict[key.strip(strip_chars)] = value.strip(strip_chars)
         except ValueError:
