@@ -10,7 +10,7 @@ setup(
     license='LGPL-2.1',
     use_scm_version=True,
     url='https://github.com/labgrid-project',
-    python_requires='>=3.5, <3.7',
+    python_requires='>=3.5, <3.8',
     install_requires=[
         'labgrid>=0.1.0',
     ],
