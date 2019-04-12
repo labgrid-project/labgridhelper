@@ -20,7 +20,6 @@ setup(
     # custom PyPI classifiers
     classifiers=[
         "Topic :: Software Development :: Testing",
-        "Framework :: Pytest",
         "Programming Language :: Python :: 3 :: Only",
         "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6",
