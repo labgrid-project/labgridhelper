@@ -1,5 +1,5 @@
 from labgrid.driver import BareboxDriver
-from labgridhelper.dictionary_functions import split_output_to_dict
+from labgridhelper.dict import split_to_dict
 
 def get_commands(command):
     """Returns the available commands of a running Barebox bootloader
@@ -25,4 +25,5 @@ def get_globals(command):
         dict: name as key and value as key-value
     """
     assert isinstance(command, BareboxDriver)
-    return split_output_to_dict(command, "global", delimiter=":", strip_chars="* ")
+    out = command.run_check("global")
+    return split_to_dict(out, delimiter=":", strip_chars="* ")
