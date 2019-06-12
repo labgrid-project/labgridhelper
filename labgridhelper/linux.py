@@ -118,3 +118,18 @@ def get_hostname(command):
     except ExecutionError:
         return None
     return hostname_string[0]
+
+def systemd_unit_properties(command, unit_properties, unit=''):
+    """Yields the values of the properties of a unit
+    Args:
+        command (CommandProtocol): An instance of a Driver implementing the CommandProtocol
+        unit_properties (iterable): Names of the properties of interest
+        unit (str, optional): The systemd unit of interest, defaults to empty (systemd manager itself)
+    Yields:
+        str: Property value of the unit
+    """
+    assert isinstance(command, CommandProtocol), "command must be a CommandProtocol"
+
+    for unit_property in unit_properties:
+        yield command.run_check('systemctl --property={property} --no-pager --value show {unit}'.format(
+            property=unit_property, unit=unit))[0]
