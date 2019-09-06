@@ -3,8 +3,10 @@ from labgridhelper.dict import split_to_dict
 
 def get_commands(command):
     """Returns the available commands of a running Barebox bootloader
+
     Args:
         command (BareboxDriver): An instance of the BareboxDriver
+
     Returns:
         list: list of the available commands
     """
@@ -19,8 +21,10 @@ def get_commands(command):
 
 def get_globals(command):
     """Returns the global variables of a running Barebox bootloader
+
     Args:
         command (BareboxDriver): An instance of the BareboxDriver
+
     Returns:
         dict: name as key and value as key-value
     """
@@ -30,9 +34,11 @@ def get_globals(command):
 
 def devinfo(command, device):
     """Returns the devinfo as dict
+
     Args:
         command (BareboxDriver): An instance of the BareboxDriver
         device (string): device to call devinfo on
+
     Returns:
         dict: parameters
     """

@@ -37,9 +37,11 @@ def get_systemd_status(command):
 
 def get_commands(command, directories=None):
     """Returns the commands of a running linux system
+
     Args:
         command (CommandProtocol): An instance of a Driver implementing the CommandProtocol
         directories (list): An optional list of directories to include
+
     Returns:
         list: list of commands available under linux
     """
@@ -60,9 +62,11 @@ def get_commands(command, directories=None):
 
 def get_systemd_service_active(command, service):
     """Returns True if service is active, False in all other cases
+
     Args:
         command (CommandProtocol): An instance of a Driver implementing the CommandProtocol
         service (str): name of the service
+
     Returns:
         bool: True if service is active, False otherwise
     """
@@ -75,9 +79,11 @@ def get_systemd_service_active(command, service):
 def get_interface_ip(command, interface="eth0"):
     import re
     """Returns the global valid IPv4 address of the supplied interface
+
     Args:
         command (CommandProtocol): An instance of a Driver implementing the CommandProtocol
         interface (string): name of the interface
+
     Returns:
         str: IPv4 address of the interface, None otherwise
     """
@@ -108,8 +114,10 @@ def get_interface_ip(command, interface="eth0"):
 
 def get_hostname(command):
     """Returns the hostname
+
     Args:
         command (CommandProtocol): An instance of a Driver implementing the CommandProtocol
+
     Returns:
         str: hostname of the target, None otherwise
     """
@@ -121,10 +129,12 @@ def get_hostname(command):
 
 def systemd_unit_properties(command, unit_properties, unit=''):
     """Yields the values of the properties of a unit
+
     Args:
         command (CommandProtocol): An instance of a Driver implementing the CommandProtocol
         unit_properties (iterable): Names of the properties of interest
         unit (str, optional): The systemd unit of interest, defaults to empty (systemd manager itself)
+
     Yields:
         str: Property value of the unit
     """
