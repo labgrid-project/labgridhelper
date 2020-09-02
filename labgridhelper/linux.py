@@ -1,4 +1,24 @@
 from labgrid.protocol import CommandProtocol
+import re
+
+def get_systemd_version(command):
+    """Returns systemd version retrieved by parsing output of `systemd --version`
+
+    Args:
+        command (CommandProtocol): An instance of a Driver implementing the CommandProtocol
+
+    Returns:
+        int: systemd version number
+    """
+    assert isinstance(command, CommandProtocol), "command must be a CommandProtocol"
+
+    out = command.run_check("systemctl --version")
+    out = out[0]
+
+    parsed = re.search(r'^systemd\s+(?P<version>\d+)\s+', out)
+    if not parsed:
+        raise ValueError("Systemd version output changed")
+    return int(parsed.group("version"))
 
 def get_systemd_status(command):
     assert isinstance(command, CommandProtocol), "command must be a CommandProtocol"
