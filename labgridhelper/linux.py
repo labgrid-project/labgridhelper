@@ -16,7 +16,7 @@ def get_systemd_version(command):
     out = command.run_check("systemctl --version")
     out = out[0]
 
-    parsed = re.search(r'^systemd\s+(?P<version>\d+)\s+', out)
+    parsed = re.search(r'^systemd\s+(?P<version>\d+)', out)
     if not parsed:
         raise ValueError("Systemd version output changed")
     return int(parsed.group("version"))
