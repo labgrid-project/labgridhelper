@@ -152,6 +152,8 @@ def get_interface_ip(command, interface="eth0"):
     Returns:
         str: IPv4 address of the interface, None otherwise
     """
+    assert isinstance(command, CommandProtocol), "command must be a CommandProtocol"
+
     try:
         ip_string = command.run_check("ip -o -4 addr show")
     except ExecutionError:
@@ -186,6 +188,8 @@ def get_hostname(command):
     Returns:
         str: hostname of the target, None otherwise
     """
+    assert isinstance(command, CommandProtocol), "command must be a CommandProtocol"
+
     try:
         hostname_string = command.run_check("hostname")
     except ExecutionError:
