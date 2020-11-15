@@ -1,4 +1,6 @@
 from labgrid.protocol import CommandProtocol
+from labgrid.driver import ExecutionError
+
 import json
 import re
 
