@@ -156,7 +156,6 @@ def get_interface_ip(command, interface="eth0"):
     try:
         ip_string = command.run_check("ip -o -4 addr show")
     except ExecutionError:
-        self.logger.debug('No ip address found')
         return None
 
     regex = re.compile(
