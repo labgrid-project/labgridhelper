@@ -1,8 +1,8 @@
-from labgrid.protocol import CommandProtocol
-from labgrid.driver import ExecutionError
-
 import json
 import re
+
+from labgrid.protocol import CommandProtocol
+from labgrid.driver import ExecutionError
 
 def get_systemd_version(command):
     """Returns systemd version retrieved by parsing output of `systemd --version`
