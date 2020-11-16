@@ -142,7 +142,6 @@ def get_systemd_service_active(command, service):
     return exitcode == 0
 
 def get_interface_ip(command, interface="eth0"):
-    import re
     """Returns the global valid IPv4 address of the supplied interface
 
     Args:
