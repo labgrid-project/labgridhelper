@@ -112,16 +112,18 @@ def get_commands(command, directories=None):
     """
     assert isinstance(command, CommandProtocol), "command must be a CommandProtocol"
     out = command.run_check("ls /usr/bin")
+    out.extend(command.run_check("ls /bin"))
     out.extend(command.run_check("ls /usr/sbin"))
+    out.extend(command.run_check("ls /sbin"))
     if directories:
         assert isinstance(directories, list), "directories must be a list"
         for directory in directories:
             out.extend(command.run_check("ls {}".format(directory)))
-    commands = []
+    commands = set()
     for line in out:
         for cmd in line.split(" "):
             if cmd:
-                commands.append(cmd)
+                commands.add(cmd)
 
     return commands
 
