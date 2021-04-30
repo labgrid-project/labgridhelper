@@ -13,7 +13,7 @@ setup(
     python_requires='>=3.5',
     setup_requires=['setuptools_scm'],
     install_requires=[
-        'labgrid>=0.1.0',
+        'labgrid>=0.1.*',
     ],
     packages=[
         'labgridhelper',
