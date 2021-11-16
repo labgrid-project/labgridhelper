@@ -85,11 +85,10 @@ def get_systemd_status(command):
             services[name]["active"] = next(data)
             services[name]["sub"] = next(data)
             services[name]["follow"] = next(data)
-            path_and_id = next(data)
-            pos = path_and_id.index('"')
-            services[name]["path"] = path_and_id[:pos]
-            services[name]["id"] = int(path_and_id[pos+1:-1].strip(" "))
-            services[name]["type"] = path_and_id[path_and_id.rfind('"'):]
+            path_and_id = next(data).split('\"')
+            services[name]["path"] = path_and_id[0]
+            services[name]["id"] = int(path_and_id[1].strip(" "))
+            services[name]["type"] = path_and_id[2]
             services[name]["objpath"] = next(data)
 
         return services
